@@ -10,3 +10,7 @@ __pycache__/
 .ipynb_checkpoints/
 venv/
 .env
+HOW_TO_RUN.md
+video_scripts/
+docs/
+tools/
