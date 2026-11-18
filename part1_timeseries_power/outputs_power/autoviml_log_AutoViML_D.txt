@@ -1,0 +1,129 @@
+##############  D A T A   S E T  A N A L Y S I S  #######################
+Training Set Shape = (25896, 36)
+    Training Set Memory Usage = 7.11 MB
+Test Set Shape = (7916, 35)
+    Test Set Memory Usage = 2.11 MB
+Single_Label Target: ['target']
+
+################ Regression VISUALIZATION Started #####################
+No shuffling of data set before training...
+    Using RandomizedSearchCV for Hyper Parameter Tuning. This is 3X faster than GridSearchCV...
+#######################################################################################
+######################## C L A S S I F Y I N G  V A R I A B L E S  ####################
+#######################################################################################
+Classifying variables in data set...
+    35 Predictors classified...
+    No variables removed since no ID or low-information variables found in data set
+##############################################################################
+######     D A T A    P R E P A R A T I O N   AND C L E A N I N G     ########
+##############################################################################
+No Missing Values in train data set
+    Test data has no missing values. Continuing...
+    Completed Label Encoding and Filling of Missing Values for Train and Test Data
+Regression problem: hyperparameters are being optimized for mae
+#######################################################################################
+#####  SULOV:  Searching for Uncorrelated List Of Variables in 34 features ############
+#######################################################################################
+    there are no null values in dataset...
+    Removing (11) highly correlated variables:
+    ['intensity', 'gap_max_min', 'sub4_other', 'hour_sin', 'wav_energy_D1', 'wav_cA3_2', 'gap_lag5', 'doy_sin', 'gap_roll_mean_168', 'gap_roll_mean_3', 'gap_roll_std_168']
+    Following (23) vars selected: ['gap_lag167', 'gap_lag23', 'gap_diff_1', 'gap_diff_24', 'hour_cos', 'sub3_heater_ac', 'gap_roll_std_6', 'grp', 'voltage', 'wav_cA3_0', 'wav_energy_D3', 'gap_roll_std_3', 'wav_cA3_1', 'wav_energy_D2', 'sub1_kitchen', 'gap_lag0', 'gap_lag1', 'gap_roll_max_24', 'hour', 'gap_std_min', 'gap_lag2', 'doy_cos', 'month']
+Splitting selected features into float and categorical (integer) variables:
+    (23) float variables ...
+    (1) categorical vars...
+###############################################################################
+#######     F E A T U R E   S E L E C T I O N    BY   X G B O O S T    ########
+###############################################################################
+Current number of predictors = 24 
+    Finding Important Features using Boosted Trees algorithm...
+        using 24 variables...
+        using 19 variables...
+        using 14 variables...
+        using 9 variables...
+        using 4 variables...
+Found 18 important features
+    Performing limited feature engineering for binning, add_poly and KMeans_Featurizer flags  ...
+    Train CV Split completed with TRAIN rows =  20716 , CV rows =  5180
+    Binning_Flag set to False or there are no float vars in data set to be binned
+    KMeans_Featurizer set to False or there are no float variables in data
+Skipping MinMax scaling since perform_scaling flag is set to False 
+#################################################################################
+######## CatBoost    M O D E L   T R A I N I N G   ##########
+#################################################################################
+Rows in Train data set = 20716
+  Features in Train data set = 18
+    Rows in held-out data set = 5180
+     Handling Imbalanced flag...
+Finding Best Model and Hyper Parameters for CatBoost model...
+    CPU Count = 2 in this device
+Using CatBoost Model, Estimated Training time = 0.888 mins
+Learning rate set to 0.025006
+0:	learn: 0.8900811	test: 0.8985713	best: 0.8985713 (0)	total: 49.7ms	remaining: 5m 47s
+500:	learn: 0.4978937	test: 0.5301862	best: 0.5301862 (500)	total: 1.18s	remaining: 15.3s
+1000:	learn: 0.4632702	test: 0.5256155	best: 0.5256155 (1000)	total: 2.29s	remaining: 13.7s
+1500:	learn: 0.4382758	test: 0.5242104	best: 0.5241747 (1489)	total: 3.37s	remaining: 12.4s
+2000:	learn: 0.4180220	test: 0.5233543	best: 0.5233067 (1992)	total: 4.53s	remaining: 11.3s
+2500:	learn: 0.4001779	test: 0.5231636	best: 0.5229985 (2109)	total: 5.65s	remaining: 10.2s
+3000:	learn: 0.3840591	test: 0.5232132	best: 0.5229985 (2109)	total: 6.84s	remaining: 9.11s
+3500:	learn: 0.3695840	test: 0.5235458	best: 0.5229985 (2109)	total: 7.96s	remaining: 7.95s
+4000:	learn: 0.3561943	test: 0.5237132	best: 0.5229985 (2109)	total: 9.08s	remaining: 6.8s
+Stopped by overfitting detector  (2000 iterations wait)
+
+bestTest = 0.5229985467
+bestIteration = 2109
+
+Shrink model to first 2110 iterations.
+    Actual training time (in seconds): 10
+###########  Single_Label  M O D E L   R E S U L T S #################
+5-fold Cross Validation RMSE Score = 0.5230
+    CatBoost Best Parameters for Model: Iterations = 2109, learning_rate = 0.03
+########################################################
+CatBoost Model Prediction Results on Held Out CV Data Set:
+Regression Plots completed in 0.015 seconds
+    MAE = 0.3449
+    MAPE = 43% (MAPE will be very high when zeros in actuals)
+    RMSE = 0.5230
+    Normalized MAE (as % std dev of Actuals) = 38%
+    Normalized RMSE (% of Std Dev of Actuals) = 57%
+################# E N S E M B L E  M O D E L  ##################
+Time taken = 1 seconds
+Based on trying multiple models, Best type of algorithm for this data set is RF_Regressor
+    Displaying results of weighted average ensemble of 5 regressors
+#############################################################################
+Regression Plots completed in 0.014 seconds
+    MAE = 0.3621
+    MAPE = 48% (MAPE will be very high when zeros in actuals)
+    RMSE = 0.5359
+    Normalized MAE (as % std dev of Actuals) = 40%
+    Normalized RMSE (% of Std Dev of Actuals) = 59%
+After multiple models, Ensemble Model Results:
+    RMSE Score = 0.53591
+#############################################################################
+Single Model is better than Ensembling Models for this data set.
+    Time taken for this Target (in seconds) = 14
+    Binning_Flag set to False or there are no float vars in data set to be binned
+    Setting best params for CatBoost model from Initial State since you cannot change params to a fitted Catboost model 
+    Number of Categorical and Integer variables used in CatBoost training = 1
+No MinMax scaling performed since scaling flag is set to false
+###########################################################################
+#####   F I N A L I Z I N G   M O D E L   O N    F U L L   T R A I N  #####
+###########################################################################
+0:	learn: 0.8914941	total: 3.96ms	remaining: 8.34s
+500:	learn: 0.5026648	total: 1.3s	remaining: 4.17s
+1000:	learn: 0.4720738	total: 2.56s	remaining: 2.83s
+1500:	learn: 0.4504280	total: 3.8s	remaining: 1.54s
+2000:	learn: 0.4327371	total: 5.01s	remaining: 271ms
+2108:	learn: 0.4292451	total: 5.27s	remaining: 0us
+     Actual Training time taken in seconds = 5
+Training of models completed. Now starting predictions on test data...
+    Calculating weighted average ensemble of 5 regressors
+Completed Ensemble predictions on held out data
+    Plotting Feature Importances to explain the output of model
+############### P R E D I C T I O N  O N  T E S T   C O M P L E T E D  #################
+    Time taken thus far (in seconds) = 20
+Writing Output files to disk...
+    Saving predictions to ./target/target_Regression_test_modified.csv
+    Saving predictions to ./target/target_Regression_submission.csv
+    Saving predictions to ./target/target_Regression_train_modified.csv
+###############  C O M P L E T E D  ################
+Time Taken in mins = 0.3 for the Entire Process

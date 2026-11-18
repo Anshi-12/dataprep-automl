@@ -1,0 +1,24 @@
+# Part 1 notebooks (AutoViML 0.2.2 needs these exact pins). Tested on Python 3.12.
+autoviml==0.2.2
+numpy==1.26.4
+scipy==1.11.4
+scikit-learn==1.5.2
+xgboost==1.7.6
+catboost>=1.2.7
+lightgbm>=4.0
+pandas>=2.0,<2.4
+ipython<9            # AutoViML imports IPython.core.display.display (removed in IPython 9)
+setuptools<81        # Python 3.12 has no distutils; setuptools<81 still ships pkg_resources for ydata-profiling
+ydata-profiling==4.12.2
+sweetviz==2.3.3
+pandas-dq==1.29
+statsmodels>=0.14
+PyWavelets>=1.5
+holidays>=0.50
+matplotlib>=3.7
+seaborn>=0.13
+kagglehub
+jupyter
+
+# Part 2 notebook (separate runtime is fine)
+google-genai>=1.0

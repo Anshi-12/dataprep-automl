@@ -1,0 +1,8 @@
+model,RMSE_kW,MAE_kW,R2,MAPE_%,train_sec
+Naive: persistence (t),0.6138,0.4025,0.372,44.5769,0.0
+Naive: same hour yesterday,0.8106,0.5474,-0.0953,67.2045,0.0
+Naive: same hour last week,0.8227,0.5704,-0.1285,73.0366,0.0
+OLS linear regression (selected features),0.5068,0.36,0.5719,45.1413,0.0247
+AutoViML B: Random Forest (Boosting_Flag=False),0.4892,0.3443,0.601,45.7323,1096.383
+AutoViML C: XGBoost (Boosting_Flag=True),0.4748,0.3319,0.6242,42.8811,101.0427
+AutoViML D: CatBoost,0.4666,0.3209,0.637,40.1658,20.5099

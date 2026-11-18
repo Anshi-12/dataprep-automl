@@ -1,0 +1,6 @@
+model,RMSE_log,MAE_log,R2_log,MAE_$,MedianAE_$,train_sec
+Baseline: training median,0.7029,0.5538,-0.0091,86.7366,46.0,0.0
+Baseline: OLS linear regression,0.4482,0.3186,0.5898,59.834,24.7928,0.0667
+AutoViML B: Random Forest (Boosting_Flag=False),0.4712,0.3349,0.5466,61.5641,25.4922,677.0735
+AutoViML C: XGBoost (Boosting_Flag=True),0.4563,0.323,0.5747,60.1024,24.6705,392.7317
+AutoViML D: CatBoost,0.4539,0.3216,0.5793,60.232,24.6432,76.2772

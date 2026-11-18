@@ -1,0 +1,12 @@
+# raw data is downloaded at runtime (Kaggle / mirror), never committed
+data/
+*.zip
+*.txt.gz
+# AutoViML scratch output
+**/log_price/
+**/target/
+catboost_info/
+__pycache__/
+.ipynb_checkpoints/
+venv/
+.env
