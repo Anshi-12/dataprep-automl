@@ -1,5 +1,5 @@
 # CMPE 255 · Data Preparation, EDA & AutoML (AutoViML) + Agentic EDA
-**Anshita Shah · MSSE, San José State University · Fall 2026**
+
 
 End-to-end data preparation on two messy Kaggle datasets: a **tabular** one (NYC Airbnb) and a **time series** (household power, 2M rows).
 Each goes through detailed EDA → cleaning → imputation → anomaly removal & clustering → feature engineering & selection → **AutoViML** models.
